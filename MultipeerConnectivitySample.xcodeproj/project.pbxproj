@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		CD49D93A217F717C003D37CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D939217F717C003D37CC /* AppDelegate.swift */; };
 		CD49D93C217F717C003D37CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D93B217F717C003D37CC /* ViewController.swift */; };
-		CD49D93F217F717C003D37CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD49D93D217F717C003D37CC /* Main.storyboard */; };
 		CD49D941217F717D003D37CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD49D940217F717D003D37CC /* Assets.xcassets */; };
 		CD49D944217F717D003D37CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD49D942217F717D003D37CC /* LaunchScreen.storyboard */; };
+		CD49D94C21821206003D37CC /* MultipeerConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D94B21821206003D37CC /* MultipeerConnectivityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CD49D936217F717C003D37CC /* MultipeerConnectivitySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerConnectivitySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD49D939217F717C003D37CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD49D93B217F717C003D37CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CD49D93E217F717C003D37CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD49D940217F717D003D37CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD49D943217F717D003D37CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD49D945217F717D003D37CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD49D94B21821206003D37CC /* MultipeerConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectivityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +56,10 @@
 			children = (
 				CD49D939217F717C003D37CC /* AppDelegate.swift */,
 				CD49D93B217F717C003D37CC /* ViewController.swift */,
-				CD49D93D217F717C003D37CC /* Main.storyboard */,
 				CD49D940217F717D003D37CC /* Assets.xcassets */,
 				CD49D942217F717D003D37CC /* LaunchScreen.storyboard */,
 				CD49D945217F717D003D37CC /* Info.plist */,
+				CD49D94B21821206003D37CC /* MultipeerConnectivityManager.swift */,
 			);
 			path = MultipeerConnectivitySample;
 			sourceTree = "<group>";
@@ -124,7 +124,6 @@
 			files = (
 				CD49D944217F717D003D37CC /* LaunchScreen.storyboard in Resources */,
 				CD49D941217F717D003D37CC /* Assets.xcassets in Resources */,
-				CD49D93F217F717C003D37CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,20 +136,13 @@
 			files = (
 				CD49D93C217F717C003D37CC /* ViewController.swift in Sources */,
 				CD49D93A217F717C003D37CC /* AppDelegate.swift in Sources */,
+				CD49D94C21821206003D37CC /* MultipeerConnectivityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CD49D93D217F717C003D37CC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD49D93E217F717C003D37CC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CD49D942217F717D003D37CC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,6 +275,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MultipeerConnectivitySample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +293,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MultipeerConnectivitySample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
