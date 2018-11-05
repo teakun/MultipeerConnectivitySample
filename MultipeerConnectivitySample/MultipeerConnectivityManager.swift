@@ -52,10 +52,6 @@ class MultipeerConnectivityManager: NSObject {
         super.init()
     }
 
-    func setup() {
-        // なにもしないけど
-    }
-
     // 接続処理開始
     func startManager() {
         self.browser = MCNearbyServiceBrowser(peer: self.ownID, serviceType: self.serviceType)
@@ -104,11 +100,14 @@ class MultipeerConnectivityManager: NSObject {
 }
 
 extension MultipeerConnectivityManager: MCNearbyServiceBrowserDelegate {
+    // 他端末を発見したとき
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+        // 自分自身を発見したときはスルー
         if peerID == ownID {
             return
         }
 
+        // それ以外はすべて招待
         browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: timeoutInterval)
     }
 
@@ -120,7 +119,9 @@ extension MultipeerConnectivityManager: MCNearbyServiceAdvertiserDelegate {
 
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {}
 
+    // 招待を受けたとき
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        // 自身でなければ参加，自身の場合は参加しない
         if peerID != ownID {
             invitationHandler(true, self.session)
         } else {
@@ -130,14 +131,18 @@ extension MultipeerConnectivityManager: MCNearbyServiceAdvertiserDelegate {
 }
 
 extension MultipeerConnectivityManager: MCSessionDelegate {
+    // データを受信したとき
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         DispatchQueue.main.async {
             self.delegate?.mcManager(manager: self, session: session, didReceive: data, from: peerID)
         }
     }
 
+    
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        delegate?.mcManager(manager: self, session: session, peer: peerID, didChange: state)
+        DispatchQueue.main.async {
+            self.delegate?.mcManager(manager: self, session: session, peer: peerID, didChange: state)
+        }
     }
 
     func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
