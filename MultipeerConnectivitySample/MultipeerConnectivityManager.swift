@@ -138,14 +138,6 @@ extension MultipeerConnectivityManager: MCSessionDelegate {
 
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         delegate?.mcManager(manager: self, session: session, peer: peerID, didChange: state)
-        switch state {
-        case .connecting:
-            print("connecting:\(peerID)")
-        case .connected:
-            print("connected")
-        case .notConnected:
-            print("not connected")
-        }
     }
 
     func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {

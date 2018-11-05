@@ -36,6 +36,9 @@ class ViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         let sendItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapMessageButton))
         self.navigationItem.setRightBarButton(sendItem, animated: false)
+
+        textView.isEditable = false
+        textView.font = UIFont.systemFont(ofSize: 18)
     }
 
     func addConstraints() {
@@ -85,6 +88,15 @@ extension ViewController: MultipeerConnectivityManagerDelegate {
     }
 
     func mcManager(manager: MultipeerConnectivityManager, session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-
+        DispatchQueue.main.async {
+            switch state {
+            case .connecting:
+                self.textView.text += "--- connecting: \(peerID.displayName) ---\n"
+            case .connected:
+                self.textView.text += "--- connected: \(peerID.displayName) ---\n"
+            case .notConnected:
+                self.textView.text += "--- notConnected: \(peerID.displayName) ---\n"
+            }
+        }
     }
 }
